@@ -18,11 +18,6 @@ extern {
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, rust-test!");
-}
-
-#[wasm_bindgen]
 pub fn start_worker() -> Result<(), JsValue> {
     // Define the URL of the worker script
     let worker_js = "../worker.js";
