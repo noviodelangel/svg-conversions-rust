@@ -10,13 +10,12 @@
     import init, { start_worker } from './pkg/svg_conversions_rust.js';
 
     async function run() {
-        let wasm = await init();
+       await init();
         start_worker();
     }
 
     document.getElementById('file').addEventListener('change', function(e) {
         const file = e.target.files[0];
-        console.log(`file`, file);
         const reader = new FileReader();
         reader.onload = function(e) {
             const contents = e.target.result;
