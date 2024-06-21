@@ -7,14 +7,31 @@
 </head>
 <body>
 <script type="module">
-    import init, { start_worker } from './pkg/rust_test.js';
+    import init, { start_worker } from './pkg/svg_conversions_rust.js';
 
     async function run() {
-        await init();
+        let wasm = await init();
         start_worker();
     }
 
-    run();
+    document.getElementById('file').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        console.log(`file`, file);
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const contents = e.target.result;
+            console.log(`contents`, contents);
+            const loadedImageElement = document.getElementById('loadedImage');
+            loadedImageElement.innerHTML = contents;
+
+            run();
+        };
+        reader.readAsText(file);
+    });
+
 </script>
+<input type="file" id="file" accept="image/svg+xml" />
+<div id="loadedImage"></div>
+<div id="convertedImage"></div>
 </body>
 </html>

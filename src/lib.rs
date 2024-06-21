@@ -26,11 +26,11 @@ pub fn start_worker() -> Result<(), JsValue> {
     let worker = Worker::new(worker_js)?;
 
     // Post a message to the worker
-    worker.post_message(&JsValue::from_str("Hello from main thread!"))?;
+    worker.post_message(&JsValue::from_str("Main thread"))?;
 
     // Handle messages from the worker
     let onmessage_callback = Closure::wrap(Box::new(move |event: MessageEvent| {
-        web_sys::console::log_1(&JsValue::from_str(&format!("Received from worker: {:?}", event.data().as_string())));
+        web_sys::console::log_1(&JsValue::from_str(&format!("worker's message: {:?}", event.data().as_string())));
     }) as Box<dyn FnMut(_)>);
 
     worker.set_onmessage(Some(onmessage_callback.as_ref().unchecked_ref()));

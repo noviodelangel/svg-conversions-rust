@@ -1,4 +1,4 @@
 self.onmessage = function(event) {
-    console.log('Message received from main script:', event.data);
-    self.postMessage('Hello from the worker!');
+    console.log(`Main's thread message: `, event.data);
+    self.postMessage('Worker reporting!');
 };
