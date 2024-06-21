@@ -9,9 +9,9 @@
 <script type="module">
     import init, { start_worker } from './pkg/svg_conversions_rust.js';
 
-    async function run() {
+    async function startWorkerWithMessage(message) {
        await init();
-        start_worker();
+       start_worker(message);
     }
 
     document.getElementById('file').addEventListener('change', function(e) {
@@ -23,7 +23,7 @@
             const loadedImageElement = document.getElementById('loadedImage');
             loadedImageElement.innerHTML = contents;
 
-            run();
+            startWorkerWithMessage(contents);
         };
         reader.readAsText(file);
     });

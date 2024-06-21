@@ -18,7 +18,7 @@ extern {
 }
 
 #[wasm_bindgen]
-pub fn start_worker() -> Result<(), JsValue> {
+pub fn start_worker(message: String) -> Result<(), JsValue> {
     // Define the URL of the worker script
     let worker_js = "../worker.js";
 
@@ -26,7 +26,7 @@ pub fn start_worker() -> Result<(), JsValue> {
     let worker = Worker::new(worker_js)?;
 
     // Post a message to the worker
-    worker.post_message(&JsValue::from_str("Main thread"))?;
+    worker.post_message(&JsValue::from_str(message.as_str()))?;
 
     // Handle messages from the worker
     let onmessage_callback = Closure::wrap(Box::new(move |event: MessageEvent| {
