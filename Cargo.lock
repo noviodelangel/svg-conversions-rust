@@ -103,18 +103,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-test"
-version = "0.1.0"
-dependencies = [
- "console_error_panic_hook",
- "time",
- "wasm-bindgen",
- "wasm-bindgen-test",
- "web-sys",
- "wee_alloc",
-]
-
-[[package]]
 name = "scoped-tls"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -138,6 +126,18 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "svg-conversions-rust"
+version = "0.1.0"
+dependencies = [
+ "console_error_panic_hook",
+ "time",
+ "wasm-bindgen",
+ "wasm-bindgen-test",
+ "web-sys",
+ "wee_alloc",
 ]
 
 [[package]]
